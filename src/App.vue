@@ -1,10 +1,15 @@
 <template>
   <main class="main">
-    <div :class="{ 'modal-background': showModalBg }" @click="removeBg"></div>
+    <div 
+      :class="{ 'modal-background': showModalBg }" 
+      @click="removeBg"
+      data-testid="modal-bg"
+    ></div>
 
     <modal-post
       v-if="selectedPost" 
       :post="selectedPost"
+      data-testid="modal"
     ></modal-post>
 
     <post-list
