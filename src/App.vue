@@ -1,25 +1,22 @@
 <template>
-
   <main class="main">
     <div :class="{ 'modal-background': showModalBg }" @click="removeBg"></div>
 
-    <ModalPost 
+    <modal-post
       v-if="selectedPost" 
-      :post="selectedPost" 
-    />
+      :post="selectedPost"
+    ></modal-post>
 
-    <PostList 
+    <post-list
       :posts="loadScreenPosts" 
-      @id-to-main="showModalPost" 
-    />
+      @id-to-main="showModalPost"
+    ></post-list>
 
-    <LoadMoreBtn 
+    <load-more-btn
       @click="increaseNumberOfPosts" 
       v-if="initalNumberOfPosts < 20" 
-    />
-
+    ></load-more-btn>
   </main>
-
 </template>
 
 <script>

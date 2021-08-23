@@ -44,7 +44,11 @@ import createDate from '../services/DateService';
 export default {
     name: "ModalPost",
     props: {
-        post: Object
+        post: {
+            type: Object,
+            required: true,
+            description: 'The indivudial post that should be rendered on the modal.'
+        }
     },
     computed: {
         logo() {

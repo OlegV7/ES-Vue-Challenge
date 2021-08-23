@@ -1,15 +1,13 @@
 <template>
-
   <section class="card-layout">
-    <Post 
+    <post
       v-for="(post, index) in posts" 
       :key="index" 
       :post="post" 
       :id="index" 
       @id-to-modal="addId" 
-    />
+    ></post>
   </section>
-
 </template>
 
 <script>
@@ -20,8 +18,15 @@ export default {
   components: {
     Post
   },
+  emits: [
+    'id-to-main'
+  ],
   props: {
-    posts: Array
+    posts: {
+      type: Array,
+      required: true,
+      descrition: 'An array of props from the JSON file.'
+    }
   },
   methods: {
     addId(id) {

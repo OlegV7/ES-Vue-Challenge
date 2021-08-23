@@ -41,9 +41,20 @@ import createDate from '../services/DateService';
 
 export default {
     name: "Post",
+    emits: [
+        'id-to-modal'
+    ],
     props: {
-        post: Object,
-        id: Number
+        post: {
+            type: Object,
+            required: true,
+            description: 'Individial post to be rendered to screen'
+        },
+        id: {
+            type: Number,
+            required: true,
+            description: 'Unique post identifier'
+        }
     },
     methods: {
         getPost() {
