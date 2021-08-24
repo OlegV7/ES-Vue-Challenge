@@ -15,6 +15,7 @@
     <post-list
       :posts="loadScreenPosts" 
       @id-to-main="showModalPost"
+      data-testid="post-list"
     ></post-list>
 
     <load-more-btn
