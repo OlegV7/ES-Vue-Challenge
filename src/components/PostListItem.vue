@@ -40,7 +40,7 @@
 import createDate from '../services/DateService';
 
 export default {
-    name: "Post",
+    name: "PostListItem",
     emits: [
         'id-to-modal'
     ],

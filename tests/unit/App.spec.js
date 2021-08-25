@@ -75,7 +75,19 @@ describe('App', () => {
         expect(wrapper.html()).toContain('<div class="" data-testid="modal-bg"></div>')
     })
 
-    it('When the button is clicked, posts get loaded', async () => {
+    it('When the page first loads, four posts get added', async () => {
+        const wrapper = mount(App)
+
+        await wrapper.setData({
+            posts: [...data]
+        })
+
+        const postListItems = wrapper.findAllComponents('[data-testid="post-list-item"]')
+
+        expect(postListItems).toHaveLength(4)
+    })
+
+    it('When the button is clicked, four more posts get loaded', async () => {
         const wrapper = mount(App)
 
         await wrapper.setData({
@@ -89,4 +101,5 @@ describe('App', () => {
 
         expect(postListItems).toHaveLength(8)
     })
+
 })

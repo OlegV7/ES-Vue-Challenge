@@ -1,22 +1,22 @@
 <template>
   <section class="card-layout">
-    <post
+    <post-list-item
       v-for="(post, index) in posts" 
       :key="index" 
       :post="post" 
       :id="index" 
       @id-to-modal="addId" 
-    ></post>
+    ></post-list-item>
   </section>
 </template>
 
 <script>
-import Post from './Post.vue'
+import PostListItem from './PostListItem.vue'
 
 export default {
   name: "PostList",
   components: {
-    Post
+    PostListItem
   },
   emits: [
     'id-to-main'

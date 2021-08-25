@@ -29,7 +29,7 @@
 import DataService from "./services/DataService";
 import PostList    from "./components/PostList.vue";
 import ModalPost   from './components/ModalPost.vue';
-import LoadMoreBtn from './components/LoadMoreBtn.vue'
+import LoadMoreBtn from './components/LoadMoreBtn.vue';
 
 export default {
   name: "App",
@@ -68,7 +68,7 @@ export default {
   created() {
     DataService.getData()
       .then(res => this.posts = res)
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
   }
 };
 </script>
