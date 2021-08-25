@@ -1,5 +1,7 @@
 <template>
   <main class="main">
+    <posts-not-found v-if="apiError"></posts-not-found>
+
     <div 
       :class="{ 'modal-background': showModalBg }" 
       @click="removeBg"
@@ -20,24 +22,25 @@
 
     <load-more-btn
       @click="increaseNumberOfPosts" 
-      v-if="initalNumberOfPosts < 20" 
+      v-if="initalNumberOfPosts < 20 && !apiError" 
     ></load-more-btn>
   </main>
 </template>
 
 <script>
-import getData from "./services/DataService";
-// import resolvedData from './services/ResolvedDataService';
-import PostList    from "./components/PostList.vue";
-import ModalPost   from './components/ModalPost.vue';
-import LoadMoreBtn from './components/LoadMoreBtn.vue';
+import getData        from "./services/DataService";
+import PostList       from "./components/PostList.vue";
+import ModalPost      from './components/ModalPost.vue';
+import LoadMoreBtn    from './components/LoadMoreBtn.vue';
+import PostsNotFound  from './components/PostsNotFound.vue';
 
 export default {
   name: "App",
   components: {
     PostList,
     ModalPost,
-    LoadMoreBtn
+    LoadMoreBtn,
+    PostsNotFound
   },
   data() {
     return {
@@ -45,7 +48,8 @@ export default {
       initalNumberOfPosts: 4,
       numberToIncreaseBy: 4,
       selectedPost: null,
-      showModalBg: false
+      showModalBg: false,
+      apiError: false
     }
   },
   methods: {
@@ -69,7 +73,9 @@ export default {
   async created() {
     try {
       this.posts = await getData()
+      this.apiError = false
     } catch (err) {
+      this.apiError = true
       return err
     }
   }
