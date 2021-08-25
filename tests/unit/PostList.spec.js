@@ -4,10 +4,10 @@ import data from '../../public/data.json'
 
 describe('PostListItem', () => {
     it('When a post is clicked, it emits its ID', async () => {
-        const wrapper = mount(PostList)
-
-        await wrapper.setProps({
-            posts: data
+        const wrapper = mount(PostList, {
+            props: {
+                posts: data
+            }
         })
 
         const firstPost = wrapper.find('[data-post-testid="0"]')

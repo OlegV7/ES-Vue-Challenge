@@ -67,7 +67,11 @@ export default {
     }
   },
   async created() {
-    this.posts = await getData()
+    try {
+      this.posts = await getData()
+    } catch (err) {
+      return err
+    }
   }
 };
 </script>
