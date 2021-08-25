@@ -26,7 +26,8 @@
 </template>
 
 <script>
-import DataService from "./services/DataService";
+import getData from "./services/DataService";
+// import resolvedData from './services/ResolvedDataService';
 import PostList    from "./components/PostList.vue";
 import ModalPost   from './components/ModalPost.vue';
 import LoadMoreBtn from './components/LoadMoreBtn.vue';
@@ -65,10 +66,8 @@ export default {
       return this.posts.slice(0, this.initalNumberOfPosts);
     }
   },
-  created() {
-    DataService.getData()
-      .then(res => this.posts = res)
-      .catch(err => console.log(err))
+  async created() {
+    this.posts = await getData()
   }
 };
 </script>

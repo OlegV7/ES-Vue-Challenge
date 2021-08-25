@@ -1,5 +1,5 @@
 <template>
-    <section class="modal">
+    <section class="modal" data-modal-testid="modal">
 
         <div class="modal-card">
             <img :src="post.image" alt="Main Image" class="modal-card__img">

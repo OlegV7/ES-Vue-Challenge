@@ -1,9 +1,9 @@
-export default {
-    getData: async () => {
-        const response = await fetch('/data.json');
+const getData = async () => {
+    const response = await fetch('/data.json');
 
-        const data = await response.json();
+    const data = await response.json();
 
-        return data
-    }
+    return data
 }
+
+export default getData

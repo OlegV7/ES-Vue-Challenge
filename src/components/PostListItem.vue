@@ -1,5 +1,5 @@
 <template>
-    <div class="card" @click="getPost" data-testid="post-list-item">
+    <div class="card" @click="getPost" data-testid="post-list-item" :data-post-testid="id">
 
         <div class="card__top">
             <div class="card__profile">
