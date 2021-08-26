@@ -23,6 +23,7 @@
     <load-more-btn
       @click="increaseNumberOfPosts" 
       v-if="initalNumberOfPosts < 20 && !apiError" 
+      data-testid="button"
     ></load-more-btn>
   </main>
 </template>
