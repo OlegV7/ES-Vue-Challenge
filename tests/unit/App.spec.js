@@ -20,7 +20,8 @@ describe('App', () => {
         jest.clearAllMocks()
     })
 
-    it('Renders posts if request is successfull', () => {
+    // it('Renders posts if request is successfull', () => {
+    test('If the request is successfull, show the posts', () => {
         const postListItems = wrapper.findAllComponents('[data-testid="post-list-item"]')
 
         expect(postListItems).toHaveLength(4)
@@ -28,7 +29,8 @@ describe('App', () => {
         expect(wrapper.html()).toContain('<div class="card" data-testid="post-list-item" data-post-testid="2">')
     })
 
-    it('When the button is clicked more posts get rendered', async () => {
+    // it('When the button is clicked more posts get rendered', async () => {
+    test('If the button is clicked, show more posts', async () => {
         const btn = wrapper.find('button')
         await btn.trigger('click')
 
@@ -39,7 +41,8 @@ describe('App', () => {
         expect(wrapper.html()).toContain('<div class="card" data-testid="post-list-item" data-post-testid="5">')
     })
 
-    it('When all of the posts are loaded, the button is not shown.', async () => {
+    // it('When all of the posts are loaded, the button is not shown.', async () => {
+    test('If all the posts are loaded, the button is not shown', async () => {
         const btn = wrapper.find('button')
         await btn.trigger('click')
         await btn.trigger('click')
@@ -52,7 +55,8 @@ describe('App', () => {
         expect(wrapper.find('button').exists()).toBe(false)
     })
 
-    it('If all of the posts are not shown, show the button', async () => {
+    // it('If all of the posts are not shown, show the button', async () => {
+    test('If all of the posts are not loaded, show the button', async () => {
         const btn = wrapper.find('button')
         await btn.trigger('click')
         expect(wrapper.find('button').exists()).toBe(true)
@@ -73,7 +77,7 @@ describe('App', () => {
         expect(wrapper.html()).toContain('<div class="" data-testid="modal-bg"></div>')
     })
 
-    it('When a post is clicked, a modal opens with its information', async () => {
+    test('If a post is clicked, a modal opens with its details', async () => {
         const firstPost = wrapper.find('[data-post-testid="0"]')
         expect(firstPost.exists()).toBe(true)
         await firstPost.trigger('click')
@@ -82,10 +86,13 @@ describe('App', () => {
         expect(wrapper.html()).toContain('<div class="modal-background" data-testid="modal-bg"></div>')
     })
 
-    it('When the modal is opened, a click on the background closes it', async () => {
+    test('If the modal is opened, a click on the background closes it', async () => {
         const firstPost = wrapper.find('[data-post-testid="0"]')
         expect(firstPost.exists()).toBe(true)
         await firstPost.trigger('click')
+
+        expect(wrapper.find('[data-testid="modal"]').exists()).toBe(true)
+        expect(wrapper.html()).toContain('<div class="modal-background" data-testid="modal-bg"></div>')
 
         const modalBg = wrapper.find('[data-testid="modal-bg"]')
         await modalBg.trigger('click')
