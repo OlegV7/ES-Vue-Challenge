@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils'
 import data from '../../public/data.json'
 
 describe('ModalPost', () => {
-    it('Props get passed to the modal component', async () => {
+    it('Props get passed to the modal component', () => {
         const wrapper = mount(ModalPost, {
             props: {
                 post: data[2]
